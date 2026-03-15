@@ -1,0 +1,130 @@
+<!--pages/achievement/achievement.wxml-->
+<view class="container">
+  <!-- 成就统计卡片 -->
+  <view class="stats-card card">
+    <view class="stats-header">
+      <text class="stats-title">成就统计</text>
+      <text class="stats-subtitle">继续加油，解锁更多成就！</text>
+    </view>
+    
+    <view class="stats-body">
+      <view class="stat-item">
+        <view class="stat-circle" style="background: conic-gradient(#4CAF50 {{progress}}%, #f0f0f0 {{progress}}%)">
+          <view class="stat-inner">
+            <text class="stat-value">{{totalAchieved}}</text>
+            <text class="stat-total">/{{totalAchievements}}</text>
+          </view>
+        </view>
+        <text class="stat-label">已达成</text>
+      </view>
+      
+      <view class="stat-divider"></view>
+      
+      <view class="stat-item">
+        <text class="stat-value-large">{{totalPoints}}</text>
+        <text class="stat-label">成就点数</text>
+      </view>
+      
+      <view class="stat-divider"></view>
+      
+      <view class="stat-item">
+        <text class="stat-value-large">{{progress}}%</text>
+        <text class="stat-label">完成度</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成就类型筛选 -->
+  <view class="filter-card card">
+    <scroll-view class="filter-scroll" scroll-x>
+      <view class="filter-tabs">
+        <view 
+          class="filter-tab {{filterType === 'all' ? 'active' : ''}}" 
+          bindtap="setFilter"
+          data-type="all"
+        >
+          全部
+        </view>
+        <view 
+          class="filter-tab {{filterType === 'step' ? 'active' : ''}}" 
+          bindtap="setFilter"
+          data-type="step"
+        >
+          👣 步数
+        </view>
+        <view 
+          class="filter-tab {{filterType === 'checkin' ? 'active' : ''}}" 
+          bindtap="setFilter"
+          data-type="checkin"
+        >
+          📝 打卡
+        </view>
+        <view 
+          class="filter-tab {{filterType === 'continuous' ? 'active' : ''}}" 
+          bindtap="setFilter"
+          data-type="continuous"
+        >
+          🔥 连续
+        </view>
+        <view 
+          class="filter-tab {{filterType === 'special' ? 'active' : ''}}" 
+          bindtap="setFilter"
+          data-type="special"
+        >
+          ⭐ 特殊
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 成就列表 -->
+  <view class="achievement-list">
+    <view 
+      class="achievement-item card {{item.achieved ? 'achieved' : ''}} {{item.isHidden ? 'hidden' : ''}}" 
+      wx:for="{{achievementList}}" 
+      wx:key="achievementId"
+      wx:if="{{!item.isHidden || item.achieved}}"
+    >
+      <view class="achievement-header">
+        <view class="achievement-icon {{item.level}}">
+          <text class="icon-emoji">{{item.achieved ? item.icon : '🔒'}}</text>
+        </view>
+        
+        <view class="achievement-info">
+          <view class="achievement-name-row">
+            <text class="achievement-name">{{item.name}}</text>
+            <text class="achievement-points">+{{item.points}}</text>
+          </view>
+          <text class="achievement-desc">{{item.description}}</text>
+          
+          <view class="achievement-condition" wx:if="{{!item.achieved}}">
+            <text class="condition-label">达成条件：</text>
+            <text class="condition-value">{{getConditionText(item)}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="achievement-footer" wx:if="{{item.achieved}}">
+        <text class="achieved-time">达成时间：{{formatDate(item.achievedAt)}}</text>
+        <button 
+          class="btn-claim {{item.rewardClaimed ? 'claimed' : ''}}" 
+          bindtap="claimReward"
+          data-id="{{item.achievementId}}"
+          disabled="{{item.rewardClaimed}}"
+        >
+          {{item.rewardClaimed ? '已领取' : '领取奖励'}}
+        </button>
+      </view>
+
+      <view class="achievement-level {{item.level}}" wx:if="{{!item.achieved}}">
+        <text class="level-text">{{getLevelText(item.level)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{achievementList.length === 0}}">
+    <text class="empty-icon">🏅</text>
+    <text class="empty-text">暂无成就数据</text>
+  </view>
+</view>

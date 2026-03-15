@@ -1,0 +1,61 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 用户信息卡片 -->
+  <view class="card user-card" wx:if="{{userInfo}}">
+    <view class="user-info flex">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-detail flex-center">
+        <text class="nickname">{{userInfo.nickName}}</text>
+        <text class="welcome">今天也要加油运动哦！💪</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 登录提示 -->
+  <view class="card login-card" wx:else>
+    <text class="login-text">登录后开始运动打卡之旅</text>
+    <button class="btn-primary mt-20" bindtap="handleLogin">微信一键登录</button>
+  </view>
+
+  <!-- 今日步数卡片 -->
+  <view class="card steps-card" wx:if="{{userInfo}}">
+    <view class="card-title">今日步数</view>
+    <view class="steps-display flex-center">
+      <text class="steps-count">{{stepCount}}</text>
+      <text class="steps-unit">步</text>
+    </view>
+    <view class="steps-sync flex-center">
+      <text class="sync-time">更新于：{{syncTime}}</text>
+      <button class="btn-sync" bindtap="syncSteps" wx:if="{{!isSyncing}}">同步</button>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="card quick-actions" wx:if="{{userInfo}}">
+    <view class="card-title">快捷操作</view>
+    <view class="action-grid">
+      <view class="action-item" bindtap="goCheckin">
+        <text class="action-icon">📝</text>
+        <text class="action-text">今日打卡</text>
+      </view>
+      <view class="action-item" bindtap="goHistory">
+        <text class="action-icon">📊</text>
+        <text class="action-text">打卡记录</text>
+      </view>
+      <view class="action-item" bindtap="goRank">
+        <text class="action-icon">🏆</text>
+        <text class="action-text">排行榜</text>
+      </view>
+      <view class="action-item" bindtap="goProfile">
+        <text class="action-icon">👤</text>
+        <text class="action-text">个人中心</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 运动小贴士 -->
+  <view class="card tips-card" wx:if="{{userInfo}}">
+    <view class="card-title">💡 运动小贴士</view>
+    <text class="tip-text">{{currentTip}}</text>
+  </view>
+</view>

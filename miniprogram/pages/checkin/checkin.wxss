@@ -1,0 +1,330 @@
+/* pages/checkin/checkin.wxss */
+.container {
+  padding-bottom: 40rpx;
+}
+
+/* 日期选择器 */
+.date-selector {
+  padding: 20rpx 30rpx;
+}
+
+.date-nav {
+  align-items: center;
+}
+
+.nav-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 50%;
+}
+
+.nav-btn.disabled {
+  opacity: 0.3;
+}
+
+.arrow {
+  font-size: 40rpx;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.current-date {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 16rpx 32rpx;
+  background: #f5f5f5;
+  border-radius: 44rpx;
+}
+
+.date-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.date-icon {
+  font-size: 32rpx;
+}
+
+/* 步数卡片 */
+.steps-card {
+  text-align: center;
+}
+
+.steps-display {
+  flex-direction: column;
+  padding: 30rpx 0;
+}
+
+.steps-count {
+  font-size: 100rpx;
+  font-weight: 700;
+  color: #4CAF50;
+  line-height: 1;
+}
+
+.steps-unit {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 12rpx;
+}
+
+.steps-extra {
+  padding: 30rpx 0;
+  border-top: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+/* 进度条 */
+.progress-bar {
+  height: 16rpx;
+  background: #f0f0f0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-top: 24rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #66BB6A);
+  border-radius: 8rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 12rpx;
+  text-align: right;
+}
+
+/* 打卡成功状态 */
+.checkin-success {
+  flex-direction: column;
+  padding: 40rpx 0;
+}
+
+.success-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
+.success-title {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.success-time {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 12rpx;
+}
+
+.checkin-detail {
+  margin-top: 40rpx;
+  padding-top: 30rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.detail-label {
+  font-size: 28rpx;
+  color: #666;
+  width: 140rpx;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.detail-value.highlight {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+/* 打卡表单 */
+.checkin-form-card {
+  padding: 30rpx;
+}
+
+.form-section {
+  margin-bottom: 40rpx;
+}
+
+.section-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+/* 心情选择器 */
+.mood-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.mood-item {
+  width: 88rpx;
+  height: 88rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 44rpx;
+  border: 4rpx solid transparent;
+  transition: all 0.2s;
+}
+
+.mood-item.selected {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+  transform: scale(1.1);
+}
+
+.mood-emoji {
+  font-size: 48rpx;
+}
+
+/* 备注输入 */
+.note-input {
+  width: 100%;
+  min-height: 200rpx;
+  padding: 24rpx;
+  background: #f5f5f5;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+/* 打卡按钮 */
+.checkin-action {
+  margin-top: 40rpx;
+}
+
+.btn-checkin {
+  width: 100%;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 600;
+  padding: 32rpx 0;
+  border-radius: 44rpx;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(76, 175, 80, 0.3);
+}
+
+.btn-checkin.disabled {
+  background: #ccc;
+  box-shadow: none;
+}
+
+/* 日历卡片 */
+.calendar-card {
+  padding: 30rpx;
+}
+
+.calendar-grid {
+  margin-top: 20rpx;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+  font-weight: 500;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10rpx;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  position: relative;
+}
+
+.calendar-day.empty {
+  background: transparent;
+}
+
+.calendar-day.today {
+  background: #4CAF50;
+}
+
+.calendar-day.today .day-num {
+  color: #fff;
+}
+
+.calendar-day.checked {
+  background: #E8F5E9;
+}
+
+.day-num {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.calendar-day.today .day-num {
+  color: #fff;
+}
+
+.day-dot {
+  width: 12rpx;
+  height: 12rpx;
+  background: #4CAF50;
+  border-radius: 50%;
+  margin-top: 8rpx;
+}
+
+.calendar-day.today .day-dot {
+  background: #fff;
+}

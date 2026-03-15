@@ -1,0 +1,82 @@
+<!--pages/rank/rank.wxml-->
+<view class="container">
+  <!-- 我的排名卡片 -->
+  <view class="my-rank-card card" wx:if="{{userRank}}">
+    <view class="rank-header">
+      <text class="rank-title">我的排名</text>
+      <text class="rank-period">{{rankPeriod}}</text>
+    </view>
+    <view class="my-rank-body flex-center">
+      <view class="rank-number {{userRank <= 3 ? 'top' : ''}}">
+        <text class="num">{{userRank}}</text>
+      </view>
+      <view class="rank-info">
+        <text class="rank-desc">超过 {{beatPercent}}% 的用户</text>
+        <text class="rank-steps">{{userSteps}} 步</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排行榜类型切换 -->
+  <view class="rank-tabs card">
+    <view 
+      class="rank-tab {{rankType === 'steps' ? 'active' : ''}}" 
+      bindtap="setRankType"
+      data-type="steps"
+    >
+      步数榜
+    </view>
+    <view 
+      class="rank-tab {{rankType === 'checkin' ? 'active' : ''}}" 
+      bindtap="setRankType"
+      data-type="checkin"
+    >
+      打卡榜
+    </view>
+    <view 
+      class="rank-tab {{rankType === 'continuous' ? 'active' : ''}}" 
+      bindtap="setRankType"
+      data-type="continuous"
+    >
+      连续打卡
+    </view>
+  </view>
+
+  <!-- 排行榜列表 -->
+  <view class="rank-list">
+    <view 
+      class="rank-item card" 
+      wx:for="{{rankList}}" 
+      wx:key="userId"
+    >
+      <view class="rank-index {{item.rank <= 3 ? 'top' : ''}}">
+        <text class="index-num">{{item.rank}}</text>
+      </view>
+      
+      <image class="user-avatar" src="{{item.avatar || '/images/default-avatar.png'}}" mode="aspectFill" />
+      
+      <view class="user-info">
+        <text class="user-name">{{item.nickname}}</text>
+        <text class="user-stat" wx:if="{{rankType === 'steps'}}">{{item.totalSteps}} 步</text>
+        <text class="user-stat" wx:if="{{rankType === 'checkin'}}">{{item.checkinDays}} 天</text>
+        <text class="user-stat" wx:if="{{rankType === 'continuous'}}">{{item.continuousDays}} 天</text>
+      </view>
+
+      <view class="rank-medal" wx:if="{{item.rank === 1}}">🥇</view>
+      <view class="rank-medal" wx:if="{{item.rank === 2}}">🥈</view>
+      <view class="rank-medal" wx:if="{{item.rank === 3}}">🥉</view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{rankList.length === 0}}">
+    <text class="empty-icon">🏆</text>
+    <text class="empty-text">暂无排行数据</text>
+    <text class="empty-hint">快去运动提升排名吧~</text>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore}}">
+    <text class="load-text">加载更多</text>
+  </view>
+</view>

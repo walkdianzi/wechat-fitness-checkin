@@ -1,0 +1,137 @@
+<!--pages/checkin/checkin.wxml-->
+<view class="container">
+  <!-- 日期选择 -->
+  <view class="date-selector card">
+    <view class="date-nav flex-between">
+      <view class="nav-btn" bindtap="prevDay">
+        <text class="arrow">‹</text>
+      </view>
+      <view class="current-date" bindtap="showDatePicker">
+        <text class="date-text">{{currentDate}}</text>
+        <text class="date-icon">📅</text>
+      </view>
+      <view class="nav-btn" bindtap="nextDay" wx:if="{{!isToday}}">
+        <text class="arrow">›</text>
+      </view>
+      <view class="nav-btn disabled" wx:else>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日步数展示 -->
+  <view class="card steps-card">
+    <view class="card-title">今日步数</view>
+    <view class="steps-display flex-center">
+      <text class="steps-count">{{stepCount}}</text>
+      <text class="steps-unit">步</text>
+    </view>
+    <view class="steps-extra flex-between">
+      <view class="stat-item">
+        <text class="stat-value">{{distance}}</text>
+        <text class="stat-label">公里</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{calorie}}</text>
+        <text class="stat-label">千卡</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{target}}</text>
+        <text class="stat-label">目标</text>
+      </view>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <view class="progress-text">{{progressPercent}}% 已完成</view>
+  </view>
+
+  <!-- 打卡状态 -->
+  <view class="card checkin-status-card" wx:if="{{isCheckedIn}}">
+    <view class="checkin-success flex-center">
+      <view class="success-icon">✅</view>
+      <view class="success-info">
+        <text class="success-title">今日已打卡</text>
+        <text class="success-time">打卡时间：{{checkinTime}}</text>
+      </view>
+    </view>
+    <view class="checkin-detail">
+      <view class="detail-row">
+        <text class="detail-label">心情：</text>
+        <text class="detail-value">{{checkinMood}}</text>
+      </view>
+      <view class="detail-row" wx:if="{{checkinNote}}">
+        <text class="detail-label">备注：</text>
+        <text class="detail-value">{{checkinNote}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="detail-label">连续打卡：</text>
+        <text class="detail-value highlight">{{continuousDays}}天</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 打卡表单 -->
+  <view class="card checkin-form-card" wx:else>
+    <view class="card-title">今日打卡</view>
+    
+    <!-- 心情选择 -->
+    <view class="form-section">
+      <text class="section-label">选择心情</text>
+      <view class="mood-selector">
+        <view 
+          class="mood-item {{mood === item.value ? 'selected' : ''}}" 
+          wx:for="{{moodOptions}}" 
+          wx:key="value"
+          bindtap="selectMood"
+          data-mood="{{item.value}}"
+        >
+          <text class="mood-emoji">{{item.emoji}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 备注输入 -->
+    <view class="form-section">
+      <text class="section-label">添加备注 (可选)</text>
+      <textarea 
+        class="note-input" 
+        placeholder="记录今天的运动感受吧~" 
+        value="{{note}}"
+        bindinput="onNoteInput"
+        maxlength="100"
+      />
+    </view>
+
+    <!-- 打卡按钮 -->
+    <view class="checkin-action">
+      <button 
+        class="btn-checkin {{canCheckin ? '' : 'disabled'}}" 
+        bindtap="doCheckin"
+        disabled="{{!canCheckin}}"
+      >
+        {{canCheckin ? '立即打卡' : '请先同步步数'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 打卡日历 -->
+  <view class="card calendar-card">
+    <view class="card-title">打卡日历</view>
+    <view class="calendar-grid">
+      <view class="calendar-header">
+        <text wx:for="{{weekDays}}" wx:key="*this" class="weekday">{{item}}</text>
+      </view>
+      <view class="calendar-days">
+        <view 
+          class="calendar-day {{item.class}}" 
+          wx:for="{{calendarDays}}" 
+          wx:key="date"
+        >
+          <text class="day-num">{{item.day}}</text>
+          <view class="day-dot" wx:if="{{item.isCheckedIn}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

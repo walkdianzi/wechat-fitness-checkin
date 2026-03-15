@@ -1,0 +1,323 @@
+/* pages/achievement/achievement.wxss */
+.container {
+  padding-bottom: 40rpx;
+  background: #f5f5f5;
+}
+
+/* 统计卡片 */
+.stats-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.stats-header {
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: #fff;
+}
+
+.stats-title {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.stats-subtitle {
+  font-size: 26rpx;
+  opacity: 0.9;
+  margin-top: 8rpx;
+}
+
+.stats-body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40rpx 20rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stat-circle {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.stat-inner {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #4CAF50;
+  line-height: 1;
+}
+
+.stat-total {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.stat-value-large {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #4CAF50;
+  line-height: 1;
+  margin-bottom: 12rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.stat-divider {
+  width: 1rpx;
+  height: 100rpx;
+  background: #eee;
+  margin: 0 20rpx;
+}
+
+/* 筛选卡片 */
+.filter-card {
+  padding: 20rpx 0;
+  margin-top: 20rpx;
+}
+
+.filter-scroll {
+  white-space: nowrap;
+}
+
+.filter-tabs {
+  display: inline-flex;
+  padding: 0 30rpx;
+  gap: 20rpx;
+}
+
+.filter-tab {
+  padding: 16rpx 32rpx;
+  background: #f5f5f5;
+  border-radius: 28rpx;
+  font-size: 28rpx;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.filter-tab.active {
+  background: #4CAF50;
+  color: #fff;
+}
+
+/* 成就列表 */
+.achievement-list {
+  margin-top: 20rpx;
+}
+
+.achievement-item {
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  transition: all 0.3s;
+}
+
+.achievement-item.achieved {
+  border-left: 4rpx solid #4CAF50;
+  background: linear-gradient(90deg, #E8F5E9, #fff);
+}
+
+.achievement-item.hidden {
+  opacity: 0.6;
+  filter: blur(1rpx);
+}
+
+.achievement-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24rpx;
+}
+
+.achievement-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 56rpx;
+}
+
+.achievement-icon.bronze {
+  background: linear-gradient(135deg, #CD7F32, #B87333);
+}
+
+.achievement-icon.silver {
+  background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+}
+
+.achievement-icon.gold {
+  background: linear-gradient(135deg, #FFD700, #FFC107);
+}
+
+.achievement-icon.platinum {
+  background: linear-gradient(135deg, #E5E4E2, #D3D3D3);
+}
+
+.achievement-icon.diamond {
+  background: linear-gradient(135deg, #B9F2FF, #00CED1);
+}
+
+.icon-emoji {
+  line-height: 1;
+}
+
+.achievement-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.achievement-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.achievement-points {
+  font-size: 28rpx;
+  color: #4CAF50;
+  font-weight: 600;
+  background: #E8F5E9;
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+}
+
+.achievement-desc {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+}
+
+.achievement-condition {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.condition-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.condition-value {
+  font-size: 24rpx;
+  color: #666;
+  background: #f5f5f5;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.achievement-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.achieved-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.btn-claim {
+  background: #4CAF50;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 12rpx 32rpx;
+  border-radius: 28rpx;
+  border: none;
+}
+
+.btn-claim.claimed {
+  background: #ccc;
+}
+
+.achievement-level {
+  margin-top: 20rpx;
+  display: inline-block;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.achievement-level.bronze {
+  background: #CD7F32;
+  color: #fff;
+}
+
+.achievement-level.silver {
+  background: #C0C0C0;
+  color: #fff;
+}
+
+.achievement-level.gold {
+  background: #FFD700;
+  color: #fff;
+}
+
+.achievement-level.platinum {
+  background: #E5E4E2;
+  color: #333;
+}
+
+.achievement-level.diamond {
+  background: #B9F2FF;
+  color: #333;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.empty-icon {
+  font-size: 100rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+}
