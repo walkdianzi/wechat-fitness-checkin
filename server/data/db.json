@@ -1,0 +1,47 @@
+{
+  "users": [],
+  "checkins": [],
+  "sportsData": [],
+  "achievements": [
+    {
+      "_id": {
+        "id": "mmric28izamhnels7"
+      },
+      "name": "初次打卡",
+      "description": "完成第一次运动打卡",
+      "icon": "🎉",
+      "condition": {
+        "type": "checkin",
+        "count": 1
+      },
+      "createdAt": "2026-03-15T08:43:24.114Z"
+    },
+    {
+      "_id": {
+        "id": "mmric28qb2i37dvek"
+      },
+      "name": "坚持不懈",
+      "description": "连续打卡 7 天",
+      "icon": "🔥",
+      "condition": {
+        "type": "continuous_checkin",
+        "count": 7
+      },
+      "createdAt": "2026-03-15T08:43:24.122Z"
+    },
+    {
+      "_id": {
+        "id": "mmric28qy9jfr8fq3"
+      },
+      "name": "万步达人",
+      "description": "单日步数达到 10000 步",
+      "icon": "🏃",
+      "condition": {
+        "type": "steps",
+        "count": 10000
+      },
+      "createdAt": "2026-03-15T08:43:24.122Z"
+    }
+  ],
+  "userAchievements": []
+}

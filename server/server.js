@@ -1,7 +1,6 @@
 // server.js - 微信运动打卡小程序后端服务
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
@@ -26,16 +25,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// 连接 MongoDB
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/fitness_checkin';
-mongoose.connect(MONGODB_URI)
-  .then(() => {
-    console.log('✅ MongoDB 连接成功');
-  })
-  .catch((err) => {
-    console.error('❌ MongoDB 连接失败:', err.message);
-    process.exit(1);
-  });
+// 初始化数据库 (lowdb - 无需 MongoDB)
+console.log('✅ 数据库已初始化 (lowdb)');
 
 // 路由
 app.use('/api/auth', authRoutes);
