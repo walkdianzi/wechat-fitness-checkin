@@ -2,7 +2,8 @@
   "desc": "关于小程序的权限配置",
   "rules": [
     {
-      "default": "allow"
+      "action": "allow",
+      "page": "*"
     }
   ]
 }
